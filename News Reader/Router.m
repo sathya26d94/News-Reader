@@ -8,6 +8,7 @@
 
 #import "Router.h"
 #import "HomeViewController.h"
+#import "DetailViewController.h"
 
 @implementation Router
 
@@ -39,6 +40,12 @@
 + (void)showHomeScreen {
     HomeViewController *homeVC = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];    
     [[Router navigationController] setViewControllers:@[homeVC]];
+}
+
++ (void)showDetailScreen:(UIViewController*)parentVC  articleDetail:(ArticleDetail*)articleDetail {
+    DetailViewController *detailVC = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+    detailVC.details = articleDetail;
+    [parentVC.navigationController pushViewController:detailVC animated:true];
 }
 
 

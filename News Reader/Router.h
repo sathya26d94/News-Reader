@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ArticleDetail.h"
 
 
 @interface Router : NSObject
 
 + (Router *)sharedInstance;
 + (UINavigationController *)navigationController;
-
++ (void)showDetailScreen:(UIViewController*)parentVC  articleDetail:(ArticleDetail*)articleDetail;
 
 + (void)showHomeScreen;
 
