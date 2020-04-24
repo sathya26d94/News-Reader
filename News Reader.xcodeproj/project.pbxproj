@@ -28,6 +28,7 @@
 		0CAAE7992451649700DCAC0E /* SyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAAE7982451649700DCAC0E /* SyncEngine.m */; };
 		0CAAE79C2451652700DCAC0E /* MOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAAE79B2451652700DCAC0E /* MOC.m */; };
 		0CAAE79F2451738300DCAC0E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAAE79E2451738300DCAC0E /* Reachability.m */; };
+		0CD9DCAB24537BFE00CF0E99 /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD9DCAA24537BFE00CF0E99 /* UIView+Category.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		0CAAE79B2451652700DCAC0E /* MOC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOC.m; sourceTree = "<group>"; };
 		0CAAE79D2451738300DCAC0E /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		0CAAE79E2451738300DCAC0E /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		0CD9DCA924537BFE00CF0E99 /* UIView+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Category.h"; sourceTree = "<group>"; };
+		0CD9DCAA24537BFE00CF0E99 /* UIView+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Category.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +144,6 @@
 		0C76FC2F24501DCB0041BEE9 /* News Reader */ = {
 			isa = PBXGroup;
 			children = (
-				0CAAE7B22451922F00DCAC0E /* Model */,
 				0C76FC3024501DCB0041BEE9 /* AppDelegate.h */,
 				0C76FC3124501DCB0041BEE9 /* AppDelegate.m */,
 				0C11EABF2450672B00A5E546 /* HomeViewController.h */,
@@ -153,20 +155,9 @@
 				0C9FEE51245314D80018543F /* DetailViewController.h */,
 				0C9FEE52245314D80018543F /* DetailViewController.m */,
 				0C9FEE53245314D80018543F /* DetailViewController.xib */,
-				0CAAE7972451649700DCAC0E /* SyncEngine.h */,
-				0CAAE7982451649700DCAC0E /* SyncEngine.m */,
-				0CAAE79A2451652700DCAC0E /* MOC.h */,
-				0CAAE79B2451652700DCAC0E /* MOC.m */,
-				0CAAE79D2451738300DCAC0E /* Reachability.h */,
-				0CAAE79E2451738300DCAC0E /* Reachability.m */,
-				0C76FC3924501DCB0041BEE9 /* Main.storyboard */,
-				0C76FC3F24501DCE0041BEE9 /* Assets.xcassets */,
-				0C76FC4124501DCE0041BEE9 /* LaunchScreen.storyboard */,
-				0C76FC4424501DCE0041BEE9 /* Info.plist */,
-				0C76FC4524501DCE0041BEE9 /* main.m */,
-				0C11EABC245053E900A5E546 /* Router.h */,
-				0C11EABD245053E900A5E546 /* Router.m */,
-				0C76FC3C24501DCB0041BEE9 /* News_Reader.xcdatamodeld */,
+				0CD9DCAE24537D3200CF0E99 /* Utilitites */,
+				0CD9DCAD24537CEA00CF0E99 /* Additionals */,
+				0CD9DCAC24537CD400CF0E99 /* Categories */,
 			);
 			path = "News Reader";
 			sourceTree = "<group>";
@@ -197,11 +188,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0CAAE7B22451922F00DCAC0E /* Model */ = {
+		0CD9DCAC24537CD400CF0E99 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				0CD9DCA924537BFE00CF0E99 /* UIView+Category.h */,
+				0CD9DCAA24537BFE00CF0E99 /* UIView+Category.m */,
 			);
-			path = Model;
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		0CD9DCAD24537CEA00CF0E99 /* Additionals */ = {
+			isa = PBXGroup;
+			children = (
+				0C76FC3C24501DCB0041BEE9 /* News_Reader.xcdatamodeld */,
+				0C76FC3924501DCB0041BEE9 /* Main.storyboard */,
+				0C76FC3F24501DCE0041BEE9 /* Assets.xcassets */,
+				0C76FC4124501DCE0041BEE9 /* LaunchScreen.storyboard */,
+				0C76FC4424501DCE0041BEE9 /* Info.plist */,
+				0C76FC4524501DCE0041BEE9 /* main.m */,
+			);
+			path = Additionals;
+			sourceTree = "<group>";
+		};
+		0CD9DCAE24537D3200CF0E99 /* Utilitites */ = {
+			isa = PBXGroup;
+			children = (
+				0CAAE7972451649700DCAC0E /* SyncEngine.h */,
+				0CAAE7982451649700DCAC0E /* SyncEngine.m */,
+				0CAAE79A2451652700DCAC0E /* MOC.h */,
+				0CAAE79B2451652700DCAC0E /* MOC.m */,
+				0CAAE79D2451738300DCAC0E /* Reachability.h */,
+				0CAAE79E2451738300DCAC0E /* Reachability.m */,
+				0C11EABC245053E900A5E546 /* Router.h */,
+				0C11EABD245053E900A5E546 /* Router.m */,
+			);
+			path = Utilitites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +364,7 @@
 				0C12D1442451E30E00DC1F57 /* ArticleDetail+CoreDataProperties.m in Sources */,
 				0CAAE79C2451652700DCAC0E /* MOC.m in Sources */,
 				0CAAE79F2451738300DCAC0E /* Reachability.m in Sources */,
+				0CD9DCAB24537BFE00CF0E99 /* UIView+Category.m in Sources */,
 				0C76FC3224501DCB0041BEE9 /* AppDelegate.m in Sources */,
 				0C11EABE245053E900A5E546 /* Router.m in Sources */,
 				0C9FEE54245314D80018543F /* DetailViewController.m in Sources */,
@@ -519,7 +541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "News Reader/Info.plist";
+				INFOPLIST_FILE = "News Reader/Additionals/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -538,7 +560,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "News Reader/Info.plist";
+				INFOPLIST_FILE = "News Reader/Additionals/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

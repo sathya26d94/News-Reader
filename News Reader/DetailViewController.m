@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import <WebKit/WebKit.h>
 #import "MOC.h"
+#import "UIView+Category.h"
 
 @interface DetailViewController ()<WKNavigationDelegate>
 @property(strong, nonatomic)UIBarButtonItem *offlineDownloadButton;
@@ -35,7 +36,7 @@
         title = @"Save for Later";
     }
     
-    [self.view addSubview:webView];
+    [webView addAndMatchParentConstraintsWithParent:self.view];
     
     self.offlineDownloadButton = [[UIBarButtonItem alloc]
                                     initWithTitle:title style:UIBarButtonItemStyleDone
