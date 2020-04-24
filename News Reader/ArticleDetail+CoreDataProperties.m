@@ -23,5 +23,6 @@
 @dynamic title;
 @dynamic url;
 @dynamic urlToImage;
-
+@dynamic imageData;
+@dynamic websiteData;
 @end
