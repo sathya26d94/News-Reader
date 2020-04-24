@@ -13,7 +13,6 @@
 		0C12D1432451E30E00DC1F57 /* ArticleDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C12D1412451E30E00DC1F57 /* ArticleDetail.m */; };
 		0C12D1442451E30E00DC1F57 /* ArticleDetail+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C12D1422451E30E00DC1F57 /* ArticleDetail+CoreDataProperties.m */; };
 		0C76FC3224501DCB0041BEE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C76FC3124501DCB0041BEE9 /* AppDelegate.m */; };
-		0C76FC3824501DCB0041BEE9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C76FC3724501DCB0041BEE9 /* ViewController.m */; };
 		0C76FC3B24501DCB0041BEE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C76FC3924501DCB0041BEE9 /* Main.storyboard */; };
 		0C76FC3E24501DCB0041BEE9 /* News_Reader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C76FC3C24501DCB0041BEE9 /* News_Reader.xcdatamodeld */; };
 		0C76FC4024501DCE0041BEE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C76FC3F24501DCE0041BEE9 /* Assets.xcassets */; };
@@ -61,8 +60,6 @@
 		0C76FC2D24501DCB0041BEE9 /* News Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "News Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C76FC3024501DCB0041BEE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0C76FC3124501DCB0041BEE9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0C76FC3624501DCB0041BEE9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0C76FC3724501DCB0041BEE9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0C76FC3A24501DCB0041BEE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0C76FC3D24501DCB0041BEE9 /* News_Reader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = News_Reader.xcdatamodel; sourceTree = "<group>"; };
 		0C76FC3F24501DCE0041BEE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,8 +144,6 @@
 				0CAAE7B22451922F00DCAC0E /* Model */,
 				0C76FC3024501DCB0041BEE9 /* AppDelegate.h */,
 				0C76FC3124501DCB0041BEE9 /* AppDelegate.m */,
-				0C76FC3624501DCB0041BEE9 /* ViewController.h */,
-				0C76FC3724501DCB0041BEE9 /* ViewController.m */,
 				0C11EABF2450672B00A5E546 /* HomeViewController.h */,
 				0C11EAC02450672B00A5E546 /* HomeViewController.m */,
 				0C11EAC12450672B00A5E546 /* HomeViewController.xib */,
@@ -348,7 +343,6 @@
 				0C12D1442451E30E00DC1F57 /* ArticleDetail+CoreDataProperties.m in Sources */,
 				0CAAE79C2451652700DCAC0E /* MOC.m in Sources */,
 				0CAAE79F2451738300DCAC0E /* Reachability.m in Sources */,
-				0C76FC3824501DCB0041BEE9 /* ViewController.m in Sources */,
 				0C76FC3224501DCB0041BEE9 /* AppDelegate.m in Sources */,
 				0C11EABE245053E900A5E546 /* Router.m in Sources */,
 				0C9FEE54245314D80018543F /* DetailViewController.m in Sources */,
