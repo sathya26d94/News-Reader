@@ -1,0 +1,8 @@
+## User settings
+xcuserdata/
+.xcodeproj/
+.xcodeproj/xcshareddata/
+.DS_Store
+**/*.xcodeproj/xcuserdata/
+**/*.xcworkspace/xcuserdata/
+Reader.xcodeproj/xcshareddata/
