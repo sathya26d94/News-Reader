@@ -7,12 +7,25 @@
 //
 
 #import "HomeTableViewCell.h"
+#import "MOC.h"
 
 @implementation HomeTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    _operation = [[NSOperationQueue alloc] init];
     // Initialization code
+}
+
+- (void)setImageView:(ArticleDetail*)detail {
+    [_operation cancelAllOperations];
+    [_operation addOperationWithBlock:^{        
+        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: detail.urlToImage]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.articleImageView.image = [UIImage imageWithData: imageData];
+//            [[MOC sharedInstance] saveManagedObjectContext];
+        });
+    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

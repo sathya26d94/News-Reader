@@ -11,6 +11,7 @@
 #import "ArticleDetail.h"
 #import "MOC.h"
 #import "HomeTableViewCell.h"
+#import "Router.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -24,7 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewCell"];
-
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.0;
     NSString *url = @"https://moedemo-93e2e.firebaseapp.com/assignment/NewsApp/articles.json";
     [[SyncEngine sharedInstance] fetchFilesAsynchronouslyWithURL:url withSuccess:^(id responseObjects) {
         [[SyncEngine sharedInstance] saveArticles:(id)responseObjects withSuccess:^(id responseObjects) {
@@ -85,6 +88,12 @@
     }
 }
 
+#pragma mark -
+#pragma mark Table View datasource Methods
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [[self.fetchedResultsController sections] count];
@@ -97,12 +106,12 @@
     return [sectionInfo numberOfObjects];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier=@"HomeTableViewCell";
     HomeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell==nil) {
         cell=[[HomeTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-        cell.textLabel.textAlignment=NSTextAlignmentCenter;
     }
     [self configureCell:cell atIndexPath:indexPath];
     
@@ -112,8 +121,21 @@
 
 - (void)configureCell:(HomeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     // Fetch Record
+    cell.imageView.image = [[UIImage alloc] init];
     ArticleDetail *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = record.author;
+    cell.titleLabelView.text = record.title;
+    cell.descriptionLabelView.text = record.descriptions;
+    cell.authorLabel.text = record.author;
+    cell.dateLabel.text = [NSDateFormatter localizedStringFromDate:record.publishedAt
+                                                         dateStyle:NSDateFormatterShortStyle
+                                                         timeStyle:kCFDateFormatterShortStyle];
+    if (record.imageData != nil) {
+        cell.imageView.image = [UIImage imageWithData: record.imageData];
+    }else {
+        [cell setImageView:record];
+    }
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
 }
 
 
@@ -139,7 +161,8 @@
 #pragma mark Table View Delegate Methods
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    ArticleDetail *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [Router showDetailScreen:self articleDetail:record];
 }
 
 

@@ -23,6 +23,9 @@
 		0C76FC5B24501DCE0041BEE9 /* News_ReaderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C76FC5A24501DCE0041BEE9 /* News_ReaderUITests.m */; };
 		0C8944062451F69B009AD4CE /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8944042451F69B009AD4CE /* HomeTableViewCell.m */; };
 		0C8944072451F69B009AD4CE /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8944052451F69B009AD4CE /* HomeTableViewCell.xib */; };
+		0C9FEE54245314D80018543F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9FEE52245314D80018543F /* DetailViewController.m */; };
+		0C9FEE55245314D80018543F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FEE53245314D80018543F /* DetailViewController.xib */; };
+		0C9FEE582453194D0018543F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9FEE572453194D0018543F /* WebKit.framework */; };
 		0CAAE7992451649700DCAC0E /* SyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAAE7982451649700DCAC0E /* SyncEngine.m */; };
 		0CAAE79C2451652700DCAC0E /* MOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAAE79B2451652700DCAC0E /* MOC.m */; };
 		0CAAE79F2451738300DCAC0E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAAE79E2451738300DCAC0E /* Reachability.m */; };
@@ -75,6 +78,10 @@
 		0C8944032451F69B009AD4CE /* HomeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
 		0C8944042451F69B009AD4CE /* HomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
 		0C8944052451F69B009AD4CE /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		0C9FEE51245314D80018543F /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		0C9FEE52245314D80018543F /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		0C9FEE53245314D80018543F /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		0C9FEE572453194D0018543F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		0CAAE7972451649700DCAC0E /* SyncEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncEngine.h; sourceTree = "<group>"; };
 		0CAAE7982451649700DCAC0E /* SyncEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncEngine.m; sourceTree = "<group>"; };
 		0CAAE79A2451652700DCAC0E /* MOC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOC.h; sourceTree = "<group>"; };
@@ -88,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C9FEE582453194D0018543F /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +127,7 @@
 				0C76FC4E24501DCE0041BEE9 /* News ReaderTests */,
 				0C76FC5924501DCE0041BEE9 /* News ReaderUITests */,
 				0C76FC2E24501DCB0041BEE9 /* Products */,
+				0C9FEE562453194D0018543F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,6 +155,9 @@
 				0C8944032451F69B009AD4CE /* HomeTableViewCell.h */,
 				0C8944042451F69B009AD4CE /* HomeTableViewCell.m */,
 				0C8944052451F69B009AD4CE /* HomeTableViewCell.xib */,
+				0C9FEE51245314D80018543F /* DetailViewController.h */,
+				0C9FEE52245314D80018543F /* DetailViewController.m */,
+				0C9FEE53245314D80018543F /* DetailViewController.xib */,
 				0CAAE7972451649700DCAC0E /* SyncEngine.h */,
 				0CAAE7982451649700DCAC0E /* SyncEngine.m */,
 				0CAAE79A2451652700DCAC0E /* MOC.h */,
@@ -180,6 +192,14 @@
 				0C76FC5C24501DCE0041BEE9 /* Info.plist */,
 			);
 			path = "News ReaderUITests";
+			sourceTree = "<group>";
+		};
+		0C9FEE562453194D0018543F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C9FEE572453194D0018543F /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		0CAAE7B22451922F00DCAC0E /* Model */ = {
@@ -293,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C76FC4324501DCE0041BEE9 /* LaunchScreen.storyboard in Resources */,
+				0C9FEE55245314D80018543F /* DetailViewController.xib in Resources */,
 				0C76FC4024501DCE0041BEE9 /* Assets.xcassets in Resources */,
 				0C76FC3B24501DCB0041BEE9 /* Main.storyboard in Resources */,
 				0C8944072451F69B009AD4CE /* HomeTableViewCell.xib in Resources */,
@@ -330,6 +351,7 @@
 				0C76FC3824501DCB0041BEE9 /* ViewController.m in Sources */,
 				0C76FC3224501DCB0041BEE9 /* AppDelegate.m in Sources */,
 				0C11EABE245053E900A5E546 /* Router.m in Sources */,
+				0C9FEE54245314D80018543F /* DetailViewController.m in Sources */,
 				0C76FC3E24501DCB0041BEE9 /* News_Reader.xcdatamodeld in Sources */,
 				0C11EAC22450672B00A5E546 /* HomeViewController.m in Sources */,
 				0C12D1432451E30E00DC1F57 /* ArticleDetail.m in Sources */,
@@ -504,7 +526,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "News Reader/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -523,7 +545,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "News Reader/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
