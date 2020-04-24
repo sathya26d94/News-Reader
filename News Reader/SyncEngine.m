@@ -33,8 +33,8 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithURL:[NSURL URLWithString:encodedUrlAsString]
             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                NSLog(@"RESPONSE: %@",response);
-                NSLog(@"DATA: %@",data);
+                //NSLog(@"RESPONSE: %@",response);
+                //NSLog(@"DATA: %@",data);
                 if (!error) {
                     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
                         NSError *jsonError;
@@ -59,40 +59,48 @@
     if (![[data valueForKey:@"status"] isEqualToString:@"ok"] ) {
         return;
     }
-//    return;
     NSArray *dataArray = [data valueForKey:@"articles"];
-    [[MOC sharedInstance] batchDeleteForTable:@"ArticleDetail" forPredicate:nil inManagedContext:[[MOC sharedInstance]masterManagedObjectContext] withSuccess:^(id responseObjects) {
-
-        for (NSDictionary* dict in dataArray) {
-            ArticleDetail *article=[NSEntityDescription insertNewObjectForEntityForName:@"ArticleDetail" inManagedObjectContext: [[MOC sharedInstance] masterManagedObjectContext]];
-            if ([dict[@"author"] isKindOfClass:[NSString class]])
-                article.author = [dict valueForKey:@"author"];
-            else
-                article.author = @"";
-            article.title = [dict valueForKey:@"title"];
-            article.descriptions = [dict valueForKey:@"description"];
-            article.url = [dict valueForKey:@"url"];
-            article.urlToImage = [dict valueForKey:@"urlToImage"];
-            
-            NSString *dateString =  dict[@"publishedAt"];
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-            NSDate *date = [dateFormatter dateFromString:dateString];
-            article.publishedAt = date;
-            
-            if ([dict[@"content"] isKindOfClass:[NSString class]])
-                article.content = [dict valueForKey:@"content"];
-            else
-                article.content = @"";
-            article.publisher = dict[@"publisher"];
-            [[MOC sharedInstance] saveManagedObjectContext];
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            successBlock(@"Success");
-        });
-    } failure:^(NSString *failureReason) {
+    
+    for (NSDictionary* dict in dataArray) {
         
-    }];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"ArticleDetail"];
+        [fetchRequest setIncludesPropertyValues:NO];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"url == %@", [dict valueForKey:@"url"]];
+        [fetchRequest setPredicate:predicate];
+        
+        NSError *error;
+        NSArray *fetchedObjects = [[[MOC sharedInstance]masterManagedObjectContext]  executeFetchRequest:fetchRequest error:&error];
+        if (fetchedObjects.count > 0) {
+            continue;
+        }
+        ArticleDetail *article=[NSEntityDescription insertNewObjectForEntityForName:@"ArticleDetail" inManagedObjectContext: [[MOC sharedInstance] masterManagedObjectContext]];
+        if ([dict[@"author"] isKindOfClass:[NSString class]])
+            article.author = [dict valueForKey:@"author"];
+        else
+            article.author = @"";
+        article.title = [dict valueForKey:@"title"];
+        article.descriptions = [dict valueForKey:@"description"];
+        article.url = [dict valueForKey:@"url"];
+        article.urlToImage = [dict valueForKey:@"urlToImage"];
+        
+        NSString *dateString =  dict[@"publishedAt"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+        NSDate *date = [dateFormatter dateFromString:dateString];
+        article.publishedAt = date;
+        
+        if ([dict[@"content"] isKindOfClass:[NSString class]])
+            article.content = [dict valueForKey:@"content"];
+        else
+            article.content = @"";
+        article.publisher = dict[@"publisher"];
+        [[MOC sharedInstance] saveManagedObjectContext];
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        successBlock(@"Success");
+    });
+    
 }
 
 @end
+
