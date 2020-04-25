@@ -12,11 +12,16 @@
 #import "MOC.h"
 #import "HomeTableViewCell.h"
 #import "Router.h"
+#import "FilterScreenView.h"
+#import "Categories/UIView+Category.h"
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, FilterScreenViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, strong) NSArray *tableArray;
+@property (strong, nonatomic) NSFetchRequest *fetchRequest;
+@property (assign, nonatomic) BOOL isSortByNewFirst;
+@property (strong, nonatomic) NSString *publisherFilter;
+@property (strong, nonatomic) NSString *authorFilter;
 
 @end
 
@@ -24,6 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isSortByNewFirst = true;
+    self.publisherFilter = @"";
+    self.authorFilter = @"";
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewCell"];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -34,23 +42,25 @@
             
         }];        
     }];
-    self.title = @"News Reader";
     
-    NSFetchRequest *fetchRequest = [ArticleDetail fetchRequest];
+    self.fetchRequest = [ArticleDetail fetchRequest];
+    [self performFetch];
     
-    // Add Sort Descriptors
-    [fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"publishedAt" ascending:NO]]];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[MOC sharedInstance]masterManagedObjectContext] sectionNameKeyPath:nil cacheName:nil];
-    [self.fetchedResultsController setDelegate:self];
+    UIBarButtonItem *moreButton = [[UIBarButtonItem alloc]
+                                  initWithImage:[UIImage imageNamed:@"more"] style:UIBarButtonItemStyleDone 
+                                  target:self
+                                  action:@selector(moreButton:)];
+    
+    self.navigationItem.rightBarButtonItems= [NSArray arrayWithObjects:moreButton,nil];
+    
+    
+}
 
-    // Perform Fetch
-    NSError *error = nil;
-    [self.fetchedResultsController performFetch:&error];
-
-    if (error) {
-        NSLog(@"Unable to perform fetch.");
-        NSLog(@"%@, %@", error, error.localizedDescription);
-    }
+- (void)moreButton:(id)sender{
+    FilterScreenView *filterView = [FilterScreenView initFilterScreenView];
+    filterView.delegate = self;
+    [filterView setupView:_isSortByNewFirst publisher:self.publisherFilter author:self.authorFilter];
+    [filterView addAndMatchParentConstraintsWithParent:self.view];
 }
 
 
@@ -138,25 +148,6 @@
     [cell layoutIfNeeded];
 }
 
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        NSManagedObject *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
-//
-//        if (record) {
-//            [self.fetchedResultsController.managedObjectContext deleteObject:record];
-//        }
-    }
-}
-
 #pragma mark -
 #pragma mark Table View Delegate Methods
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -165,5 +156,42 @@
     [Router showDetailScreen:self articleDetail:record];
 }
 
+- (void)filterApplied:(BOOL)isSortByNewFirst publisher:(NSString *)publisher author:(NSString *)author {
+    self.isSortByNewFirst = isSortByNewFirst;
+    self.publisherFilter = publisher;
+    self.authorFilter = author;
+    [self performFetch];
+}
+
+- (void)performFetch {
+    
+    [self.fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"publishedAt" ascending:!self.isSortByNewFirst]]];
+    
+    NSMutableArray *compoundPredicateArray = [NSMutableArray array];
+    if ([_authorFilter length] > 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"author CONTAINS[cd] %@", _authorFilter];
+        [compoundPredicateArray addObject:predicate];
+    }
+    
+    if ([_publisherFilter length] > 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"publisher CONTAINS[cd] %@", _publisherFilter];
+        [compoundPredicateArray addObject:predicate];
+    }
+    
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates: compoundPredicateArray];
+    [self.fetchRequest setPredicate:predicate];
+    if (self.fetchedResultsController == nil) {
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:self.fetchRequest managedObjectContext:[[MOC sharedInstance]masterManagedObjectContext] sectionNameKeyPath:nil cacheName:nil];
+    }
+    
+    [self.fetchedResultsController setDelegate:self];
+    NSError *error = nil;
+    [self.fetchedResultsController performFetch:&error];
+    
+    if (error) {
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    [self.tableView reloadData];
+}
 
 @end
