@@ -38,7 +38,8 @@
 }
 
 + (void)showHomeScreen {
-    HomeViewController *homeVC = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];    
+    HomeViewController *homeVC = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    homeVC.title = @"News";
     [[Router navigationController] setViewControllers:@[homeVC]];
 }
 

@@ -8,8 +8,11 @@
 
 #import "AppDelegate.h"
 #import "Router.h"
+#import <UserNotifications/UserNotifications.h>
+#import "SyncEngine.h"
 
-@interface AppDelegate ()
+
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
 
@@ -23,9 +26,30 @@
     self.window.rootViewController = [Router navigationController];
     [Router showHomeScreen];
     [self.window makeKeyAndVisible];
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
 
 
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"started");
+    NSString *url = @"https://moedemo-93e2e.firebaseapp.com/assignment/NewsApp/articles.json";
+    [[SyncEngine sharedInstance] fetchFilesAsynchronouslyWithURL:url withSuccess:^(id responseObjects) {
+        [[SyncEngine sharedInstance] saveArticles:(id)responseObjects withSuccess:^(id responseObjects) {
+            NSLog(@"completed");
+            completionHandler(UIBackgroundFetchResultNewData);
+        }];
+    }];
+}
+
 
 @end
+//todos
+/*
+ 1) image caching
+ 2) download from home
+ 3) background fetch *
+ 4) remove old data
+ 5) MVVM
+ 6) Push Notification *
+ */

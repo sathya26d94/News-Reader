@@ -29,6 +29,8 @@
 		0CAAE79C2451652700DCAC0E /* MOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAAE79B2451652700DCAC0E /* MOC.m */; };
 		0CAAE79F2451738300DCAC0E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAAE79E2451738300DCAC0E /* Reachability.m */; };
 		0CD9DCAB24537BFE00CF0E99 /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD9DCAA24537BFE00CF0E99 /* UIView+Category.m */; };
+		0CD9DCB1245418AF00CF0E99 /* FilterScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD9DCB0245418AF00CF0E99 /* FilterScreenView.m */; };
+		0CD9DCB3245418C100CF0E99 /* FilterScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD9DCB2245418C100CF0E99 /* FilterScreenView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,10 @@
 		0CAAE79E2451738300DCAC0E /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		0CD9DCA924537BFE00CF0E99 /* UIView+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Category.h"; sourceTree = "<group>"; };
 		0CD9DCAA24537BFE00CF0E99 /* UIView+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Category.m"; sourceTree = "<group>"; };
+		0CD9DCAF245418AF00CF0E99 /* FilterScreenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterScreenView.h; sourceTree = "<group>"; };
+		0CD9DCB0245418AF00CF0E99 /* FilterScreenView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterScreenView.m; sourceTree = "<group>"; };
+		0CD9DCB2245418C100CF0E99 /* FilterScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterScreenView.xib; sourceTree = "<group>"; };
+		0CD9DCB424543C8A00CF0E99 /* News Reader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "News Reader.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,7 @@
 		0C76FC2F24501DCB0041BEE9 /* News Reader */ = {
 			isa = PBXGroup;
 			children = (
+				0CD9DCB424543C8A00CF0E99 /* News Reader.entitlements */,
 				0C76FC3024501DCB0041BEE9 /* AppDelegate.h */,
 				0C76FC3124501DCB0041BEE9 /* AppDelegate.m */,
 				0C11EABF2450672B00A5E546 /* HomeViewController.h */,
@@ -155,6 +162,9 @@
 				0C9FEE51245314D80018543F /* DetailViewController.h */,
 				0C9FEE52245314D80018543F /* DetailViewController.m */,
 				0C9FEE53245314D80018543F /* DetailViewController.xib */,
+				0CD9DCAF245418AF00CF0E99 /* FilterScreenView.h */,
+				0CD9DCB0245418AF00CF0E99 /* FilterScreenView.m */,
+				0CD9DCB2245418C100CF0E99 /* FilterScreenView.xib */,
 				0CD9DCAE24537D3200CF0E99 /* Utilitites */,
 				0CD9DCAD24537CEA00CF0E99 /* Additionals */,
 				0CD9DCAC24537CD400CF0E99 /* Categories */,
@@ -292,6 +302,14 @@
 				TargetAttributes = {
 					0C76FC2C24501DCB0041BEE9 = {
 						CreatedOnToolsVersion = 11.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					0C76FC4A24501DCE0041BEE9 = {
 						CreatedOnToolsVersion = 11.2;
@@ -332,6 +350,7 @@
 				0C9FEE55245314D80018543F /* DetailViewController.xib in Resources */,
 				0C76FC4024501DCE0041BEE9 /* Assets.xcassets in Resources */,
 				0C76FC3B24501DCB0041BEE9 /* Main.storyboard in Resources */,
+				0CD9DCB3245418C100CF0E99 /* FilterScreenView.xib in Resources */,
 				0C8944072451F69B009AD4CE /* HomeTableViewCell.xib in Resources */,
 				0C11EAC32450672B00A5E546 /* HomeViewController.xib in Resources */,
 			);
@@ -370,6 +389,7 @@
 				0C9FEE54245314D80018543F /* DetailViewController.m in Sources */,
 				0C76FC3E24501DCB0041BEE9 /* News_Reader.xcdatamodeld in Sources */,
 				0C11EAC22450672B00A5E546 /* HomeViewController.m in Sources */,
+				0CD9DCB1245418AF00CF0E99 /* FilterScreenView.m in Sources */,
 				0C12D1432451E30E00DC1F57 /* ArticleDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,6 +559,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "News Reader/News Reader.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "News Reader/Additionals/Info.plist";
@@ -558,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "News Reader/News Reader.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "News Reader/Additionals/Info.plist";
