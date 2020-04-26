@@ -41,7 +41,7 @@
     self.layer.cornerRadius = 15.5;
     [self.leftAnchor constraintEqualToAnchor:parentView.leftAnchor constant:10].active = YES;
     [self.rightAnchor constraintEqualToAnchor:parentView.rightAnchor constant:-10].active = YES;
-    [self.bottomAnchor constraintEqualToAnchor:parentView.bottomAnchor constant:-150].active = YES;
+    [self.bottomAnchor constraintEqualToAnchor:parentView.bottomAnchor constant:-44].active = YES;
 }
 
 @end

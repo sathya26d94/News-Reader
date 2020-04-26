@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <News_Reader-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

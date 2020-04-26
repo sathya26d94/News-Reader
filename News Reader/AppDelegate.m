@@ -95,7 +95,6 @@
 }
 
 #pragma mark - observe reachability
-
 - (void)addReachabilityObserver {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkForReachability) name:kReachabilityChangedNotification object:nil];
 }
