@@ -10,7 +10,13 @@ import Foundation
 import UIKit
 
 extension UIApplication {
-    //get top view controller
+    /**
+     Return the top most view controller
+     
+     - Parameter controller: Optional from where top viewcontroller will be returned, otherwise will return top most view controller on rootViewController
+     - Returns: top viewcontroller
+     */
+    
     @objc class func topViewControllerObjcC(controller: UIViewController?) -> UIViewController? {
         var topController = controller
         if controller == nil {
