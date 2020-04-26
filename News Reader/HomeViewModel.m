@@ -35,7 +35,9 @@
     NSString *url = @"https://moedemo-93e2e.firebaseapp.com/assignment/NewsApp/articles.json";
     [[SyncEngine sharedInstance] fetchFilesAsynchronouslyWithURL:url withSuccess:^(id responseObjects) {
         [[SyncEngine sharedInstance] saveArticles:(id)responseObjects withSuccess:^(id responseObjects) {
-            
+            if ([[self delegate] respondsToSelector:@selector(initialFetchCompleted)]) {
+                [self.delegate initialFetchCompleted];
+            }
         }];
     }];
 }

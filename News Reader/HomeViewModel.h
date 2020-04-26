@@ -14,6 +14,7 @@
 @protocol HomeViewModelDelegate <NSObject>
 
 -(void)reloadTable;
+-(void)initialFetchCompleted;
 
 @end
 

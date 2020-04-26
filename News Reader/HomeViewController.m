@@ -16,11 +16,13 @@
 #import "UIImageView+WebCache.h"
 #import "Categories/UIView+Category.h"
 #import "HomeViewModel.h"
+#import "HomeSkeletonView.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, FilterScreenViewDelegate, HomeViewModelDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic)HomeViewModel *viewModel;
 @property (strong, nonatomic)FilterScreenView *filterView;
+@property (strong, nonatomic)HomeSkeletonView *skView;
 
 @end
 
@@ -28,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self showSkeletonView];
     [self setupUI];
     [self setUpViewModel];
 }
@@ -54,6 +57,22 @@
     self.filterView.delegate = self;
     [self.filterView setupView:self.viewModel.isSortByNewFirst publisher:self.viewModel.publisherFilter author:self.viewModel.authorFilter];
     [self.filterView addAndMatchParentConstraintsWithParent:self.view];
+}
+
+- (void)showSkeletonView {
+    if ([self.view.subviews containsObject:self.skView]) {
+        return;
+    }
+    if (self.skView == nil) {
+        self.skView = [HomeSkeletonView initHomeSkeletonView];
+    }
+    
+    [self.skView addAndMatchParentConstraintsWithParent:self.view];
+    [self.skView createAnimeTimer];
+}
+
+- (void)hideSkeletonView {
+    [self.skView removeThisView];
 }
 
 - (void)addMoreButtonToNavigationController {
@@ -159,6 +178,10 @@
 #pragma mark - HomeViewModelDelegate
 - (void)reloadTable {
     [self.tableView reloadData];
+}
+
+- (void)initialFetchCompleted {
+    [self hideSkeletonView];
 }
 
 @end

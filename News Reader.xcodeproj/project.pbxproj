@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C056C43245595F500256D3D /* HomeSkeletonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C056C42245595F500256D3D /* HomeSkeletonView.m */; };
+		0C056C452455960600256D3D /* HomeSkeletonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C056C442455960600256D3D /* HomeSkeletonView.xib */; };
+		0C056C4724559B0000256D3D /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C056C4624559B0000256D3D /* SkeletonView.swift */; };
 		0C11EABE245053E900A5E546 /* Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C11EABD245053E900A5E546 /* Router.m */; };
 		0C11EAC22450672B00A5E546 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C11EAC02450672B00A5E546 /* HomeViewController.m */; };
 		0C11EAC32450672B00A5E546 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C11EAC12450672B00A5E546 /* HomeViewController.xib */; };
@@ -48,7 +51,7 @@
 		0CD9DD0C2454B6D900CF0E99 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD9DCFB2454B6D900CF0E99 /* SDWebImageCompat.m */; };
 		0CD9DD0D2454B6D900CF0E99 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD9DCFD2454B6D900CF0E99 /* UIImage+WebP.m */; };
 		0CD9DD0F24554CFC00CF0E99 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD9DD0E24554CFC00CF0E99 /* UserNotifications.framework */; };
-		0CD9DD122455588E00CF0E99 /* UIApplication+Extensions.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD9DD112455588E00CF0E99 /* UIApplication+Extensions.swift.swift */; };
+		0CD9DD122455588E00CF0E99 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD9DD112455588E00CF0E99 /* UIApplication+Extensions.swift */; };
 		0CD9DD15245569D900CF0E99 /* HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD9DD14245569D900CF0E99 /* HomeViewModel.m */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +73,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C056C41245595F500256D3D /* HomeSkeletonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSkeletonView.h; sourceTree = "<group>"; };
+		0C056C42245595F500256D3D /* HomeSkeletonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSkeletonView.m; sourceTree = "<group>"; };
+		0C056C442455960600256D3D /* HomeSkeletonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSkeletonView.xib; sourceTree = "<group>"; };
+		0C056C4624559B0000256D3D /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
 		0C11EABC245053E900A5E546 /* Router.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Router.h; sourceTree = "<group>"; };
 		0C11EABD245053E900A5E546 /* Router.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Router.m; sourceTree = "<group>"; };
 		0C11EABF2450672B00A5E546 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -148,7 +155,7 @@
 		0CD9DCFD2454B6D900CF0E99 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
 		0CD9DD0E24554CFC00CF0E99 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		0CD9DD102455588E00CF0E99 /* News Reader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "News Reader-Bridging-Header.h"; sourceTree = "<group>"; };
-		0CD9DD112455588E00CF0E99 /* UIApplication+Extensions.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift.swift"; sourceTree = "<group>"; };
+		0CD9DD112455588E00CF0E99 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		0CD9DD13245569D900CF0E99 /* HomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewModel.h; sourceTree = "<group>"; };
 		0CD9DD14245569D900CF0E99 /* HomeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +226,9 @@
 				0C8944032451F69B009AD4CE /* HomeTableViewCell.h */,
 				0C8944042451F69B009AD4CE /* HomeTableViewCell.m */,
 				0C8944052451F69B009AD4CE /* HomeTableViewCell.xib */,
+				0C056C41245595F500256D3D /* HomeSkeletonView.h */,
+				0C056C42245595F500256D3D /* HomeSkeletonView.m */,
+				0C056C442455960600256D3D /* HomeSkeletonView.xib */,
 				0C9FEE51245314D80018543F /* DetailViewController.h */,
 				0C9FEE52245314D80018543F /* DetailViewController.m */,
 				0C9FEE53245314D80018543F /* DetailViewController.xib */,
@@ -264,7 +274,7 @@
 			children = (
 				0CD9DCA924537BFE00CF0E99 /* UIView+Category.h */,
 				0CD9DCAA24537BFE00CF0E99 /* UIView+Category.m */,
-				0CD9DD112455588E00CF0E99 /* UIApplication+Extensions.swift.swift */,
+				0CD9DD112455588E00CF0E99 /* UIApplication+Extensions.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -295,6 +305,7 @@
 				0CAAE79E2451738300DCAC0E /* Reachability.m */,
 				0C11EABC245053E900A5E546 /* Router.h */,
 				0C11EABD245053E900A5E546 /* Router.m */,
+				0C056C4624559B0000256D3D /* SkeletonView.swift */,
 			);
 			path = Utilitites;
 			sourceTree = "<group>";
@@ -457,6 +468,7 @@
 				0C76FC3B24501DCB0041BEE9 /* Main.storyboard in Resources */,
 				0CD9DCB3245418C100CF0E99 /* FilterScreenView.xib in Resources */,
 				0C8944072451F69B009AD4CE /* HomeTableViewCell.xib in Resources */,
+				0C056C452455960600256D3D /* HomeSkeletonView.xib in Resources */,
 				0C11EAC32450672B00A5E546 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +499,7 @@
 				0CD9DD052454B6D900CF0E99 /* UIImageView+WebCache.m in Sources */,
 				0C76FC4624501DCE0041BEE9 /* main.m in Sources */,
 				0CD9DD092454B6D900CF0E99 /* SDWebImageDownloaderOperation.m in Sources */,
+				0C056C4724559B0000256D3D /* SkeletonView.swift in Sources */,
 				0CAAE7992451649700DCAC0E /* SyncEngine.m in Sources */,
 				0C8944062451F69B009AD4CE /* HomeTableViewCell.m in Sources */,
 				0CD9DD0D2454B6D900CF0E99 /* UIImage+WebP.m in Sources */,
@@ -507,9 +520,10 @@
 				0CD9DD042454B6D900CF0E99 /* SDWebImagePrefetcher.m in Sources */,
 				0CD9DD0C2454B6D900CF0E99 /* SDWebImageCompat.m in Sources */,
 				0CD9DD072454B6D900CF0E99 /* UIImageView+HighlightedWebCache.m in Sources */,
-				0CD9DD122455588E00CF0E99 /* UIApplication+Extensions.swift.swift in Sources */,
+				0CD9DD122455588E00CF0E99 /* UIApplication+Extensions.swift in Sources */,
 				0C11EAC22450672B00A5E546 /* HomeViewController.m in Sources */,
 				0CD9DCB1245418AF00CF0E99 /* FilterScreenView.m in Sources */,
+				0C056C43245595F500256D3D /* HomeSkeletonView.m in Sources */,
 				0C12D1432451E30E00DC1F57 /* ArticleDetail.m in Sources */,
 				0CD9DD012454B6D900CF0E99 /* MKAnnotationView+WebCache.m in Sources */,
 				0CD9DD032454B6D900CF0E99 /* SDImageCache.m in Sources */,

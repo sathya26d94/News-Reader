@@ -26,7 +26,7 @@
     WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:theConfiguration];
     webView.navigationDelegate = self;
     NSURL *nsurl=[NSURL URLWithString:self.details.url];
-    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:nsurl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:15.0];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:nsurl cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
     
     NSString *title;
     if (self.details.websiteData) {
