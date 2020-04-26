@@ -27,6 +27,7 @@
     return self;
 }
 
+#pragma mark - fetch api and return result as dict
 - (void)fetchFilesAsynchronouslyWithURL:(NSString*)urlString withSuccess:(SuccessBlock)successBlock{
     NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
     NSString *encodedUrlAsString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:set];
@@ -55,6 +56,7 @@
             }] resume];
 }
 
+#pragma mark - save articles to the core data (remove one year data, dont add if already exits)
 - (void)saveArticles:(id)data withSuccess:(SuccessBlock)successBlock {
     if (![[data valueForKey:@"status"] isEqualToString:@"ok"] ) {
         successBlock(@"failure");

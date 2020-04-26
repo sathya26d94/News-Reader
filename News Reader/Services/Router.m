@@ -32,7 +32,7 @@
     return self;
 }
 
-
+#pragma mark - singleton navi controller
 + (UINavigationController *)navigationController {
     static dispatch_once_t once;
     static UINavigationController *dataBaseDAOObject;
@@ -42,12 +42,14 @@
     return dataBaseDAOObject;
 }
 
+#pragma mark - set home view
 + (void)showHomeScreen {
     HomeViewController *homeVC = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
     homeVC.title = @"News";
     [[Router navigationController] setViewControllers:@[homeVC]];
 }
 
+#pragma mark - go to detail
 + (void)showDetailScreen:(UIViewController*)parentVC  articleDetail:(ArticleDetail*)articleDetail {
     if (parentVC == nil) { //Incase called from notifications
         UIViewController *topvc = [UIApplication topViewControllerObjcCWithController:nil];
@@ -65,13 +67,11 @@
     [parentVC.navigationController pushViewController:detailVC animated:true];
 }
 
+#pragma mark - show alert view
 + (void)showAlertWithMessage:(NSString*)msg {
-    
     UIWindow *window = [(AppDelegate *)[[UIApplication sharedApplication] delegate] window];
     AlertView *alertView = [AlertView initAlertView];
     [alertView addToWindowWithText:msg toView:window];
-    
-    
 }
 
 

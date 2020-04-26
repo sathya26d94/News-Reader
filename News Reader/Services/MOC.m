@@ -101,6 +101,7 @@
     }
 }
 
+#pragma mark - clear data older than given date
 - (void)clearDataOlderThan:(NSDate*)date tableName:(NSString*)tableName withSuccess:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:tableName];
     [fetchRequest setIncludesPropertyValues:NO];

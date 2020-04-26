@@ -10,21 +10,7 @@ import Foundation
 import UIKit
 
 extension UIApplication {
-    @objc class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-        if let navigationController = controller as? UINavigationController {
-            return topViewController(controller: navigationController.visibleViewController)
-        }
-        if let tabController = controller as? UITabBarController {
-            if let selected = tabController.selectedViewController {
-                return topViewController(controller: selected)
-            }
-        }
-        if let presented = controller?.presentedViewController {
-            return topViewController(controller: presented)
-        }
-        return controller
-    }
-    
+    //get top view controller
     @objc class func topViewControllerObjcC(controller: UIViewController?) -> UIViewController? {
         var topController = controller
         if controller == nil {
@@ -43,4 +29,20 @@ extension UIApplication {
         }
         return topController
     }
+    
+    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        return controller
+    }
+    
 }
