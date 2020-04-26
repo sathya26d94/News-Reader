@@ -80,10 +80,10 @@
 		0C11EABF2450672B00A5E546 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		0C11EAC02450672B00A5E546 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		0C11EAC12450672B00A5E546 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		0C12D13F2451E30E00DC1F57 /* ArticleDetail+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ArticleDetail+CoreDataProperties.h"; path = "News Reader/ArticleDetail+CoreDataProperties.h"; sourceTree = "<group>"; };
-		0C12D1402451E30E00DC1F57 /* ArticleDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ArticleDetail.h; path = "News Reader/ArticleDetail.h"; sourceTree = "<group>"; };
-		0C12D1412451E30E00DC1F57 /* ArticleDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ArticleDetail.m; path = "News Reader/ArticleDetail.m"; sourceTree = "<group>"; };
-		0C12D1422451E30E00DC1F57 /* ArticleDetail+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ArticleDetail+CoreDataProperties.m"; path = "News Reader/ArticleDetail+CoreDataProperties.m"; sourceTree = "<group>"; };
+		0C12D13F2451E30E00DC1F57 /* ArticleDetail+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArticleDetail+CoreDataProperties.h"; sourceTree = "<group>"; };
+		0C12D1402451E30E00DC1F57 /* ArticleDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleDetail.h; sourceTree = "<group>"; };
+		0C12D1412451E30E00DC1F57 /* ArticleDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleDetail.m; sourceTree = "<group>"; };
+		0C12D1422451E30E00DC1F57 /* ArticleDetail+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ArticleDetail+CoreDataProperties.m"; sourceTree = "<group>"; };
 		0C76FC2D24501DCB0041BEE9 /* News Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "News Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C76FC3024501DCB0041BEE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0C76FC3124501DCB0041BEE9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -188,8 +188,8 @@
 		0C056C482455A1C300256D3D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				0C056C4A2455A1E000256D3D /* Details */,
 				0C056C492455A1CD00256D3D /* Home */,
+				0C056C4A2455A1E000256D3D /* Details */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -241,13 +241,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		0C76FC2424501DCB0041BEE9 = {
+		0C056C4D2455A28200256D3D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				0C12D1402451E30E00DC1F57 /* ArticleDetail.h */,
 				0C12D1412451E30E00DC1F57 /* ArticleDetail.m */,
 				0C12D13F2451E30E00DC1F57 /* ArticleDetail+CoreDataProperties.h */,
 				0C12D1422451E30E00DC1F57 /* ArticleDetail+CoreDataProperties.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0C76FC2424501DCB0041BEE9 = {
+			isa = PBXGroup;
+			children = (
 				0C76FC2F24501DCB0041BEE9 /* News Reader */,
 				0C76FC4E24501DCE0041BEE9 /* News ReaderTests */,
 				0C76FC5924501DCE0041BEE9 /* News ReaderUITests */,
@@ -271,6 +278,7 @@
 			children = (
 				0C76FC3024501DCB0041BEE9 /* AppDelegate.h */,
 				0C76FC3124501DCB0041BEE9 /* AppDelegate.m */,
+				0C056C4D2455A28200256D3D /* Models */,
 				0C056C482455A1C300256D3D /* Modules */,
 				0CD9DCAE24537D3200CF0E99 /* Services */,
 				0CD9DCAD24537CEA00CF0E99 /* Additionals */,
