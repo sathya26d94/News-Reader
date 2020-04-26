@@ -10,12 +10,13 @@
 
 @implementation FilterScreenView
 
-
+#pragma mark - Init method
 + (FilterScreenView*)initFilterScreenView {
     FilterScreenView *result = [[[NSBundle mainBundle] loadNibNamed:@"FilterScreenView" owner:nil options:nil] lastObject];
     return result;
 }
 
+#pragma mark - initialize data
 - (void)setupView:(BOOL)isSortByNewFirst publisher:(NSString *)publisher author:(NSString *)author {
     self.isSortByNewFirst = isSortByNewFirst;
     self.publisherTextField.text = publisher;
@@ -25,6 +26,7 @@
     self.sortTypeNew.on = isSortByNewFirst;
 }
 
+#pragma mark - IBActions
 - (IBAction)applyAction:(id)sender {
     if ([[self delegate] respondsToSelector:@selector(filterApplied:publisher:author:)]) {
         [self.delegate filterApplied:_isSortByNewFirst publisher:self.publisherTextField.text author:self.AuthorTextField.text];

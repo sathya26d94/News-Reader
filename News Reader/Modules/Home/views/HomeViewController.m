@@ -36,7 +36,7 @@
 }
 
 #pragma mark - UISetups
-- (void)setupUI {
+- (void)setupUI {    
     [self setupTableView];
     [self addMoreButtonToNavigationController];
 }

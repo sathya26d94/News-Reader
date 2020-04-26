@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0C056C43245595F500256D3D /* HomeSkeletonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C056C42245595F500256D3D /* HomeSkeletonView.m */; };
 		0C056C452455960600256D3D /* HomeSkeletonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C056C442455960600256D3D /* HomeSkeletonView.xib */; };
+		0C056C512455AD3600256D3D /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C056C502455AD3600256D3D /* AlertView.m */; };
+		0C056C532455AE1700256D3D /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C056C522455AE1700256D3D /* AlertView.xib */; };
 		0C11EABE245053E900A5E546 /* Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C11EABD245053E900A5E546 /* Router.m */; };
 		0C11EAC22450672B00A5E546 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C11EAC02450672B00A5E546 /* HomeViewController.m */; };
 		0C11EAC32450672B00A5E546 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C11EAC12450672B00A5E546 /* HomeViewController.xib */; };
@@ -75,6 +77,9 @@
 		0C056C41245595F500256D3D /* HomeSkeletonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSkeletonView.h; sourceTree = "<group>"; };
 		0C056C42245595F500256D3D /* HomeSkeletonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSkeletonView.m; sourceTree = "<group>"; };
 		0C056C442455960600256D3D /* HomeSkeletonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSkeletonView.xib; sourceTree = "<group>"; };
+		0C056C4F2455AD3600256D3D /* AlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
+		0C056C502455AD3600256D3D /* AlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertView.m; sourceTree = "<group>"; };
+		0C056C522455AE1700256D3D /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		0C11EABC245053E900A5E546 /* Router.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Router.h; sourceTree = "<group>"; };
 		0C11EABD245053E900A5E546 /* Router.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Router.m; sourceTree = "<group>"; };
 		0C11EABF2450672B00A5E546 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -252,6 +257,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		0C056C4E2455AD1F00256D3D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C056C4F2455AD3600256D3D /* AlertView.h */,
+				0C056C502455AD3600256D3D /* AlertView.m */,
+				0C056C522455AE1700256D3D /* AlertView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0C76FC2424501DCB0041BEE9 = {
 			isa = PBXGroup;
 			children = (
@@ -278,11 +293,12 @@
 			children = (
 				0C76FC3024501DCB0041BEE9 /* AppDelegate.h */,
 				0C76FC3124501DCB0041BEE9 /* AppDelegate.m */,
+				0C056C4E2455AD1F00256D3D /* Views */,
 				0C056C4D2455A28200256D3D /* Models */,
 				0C056C482455A1C300256D3D /* Modules */,
 				0CD9DCAE24537D3200CF0E99 /* Services */,
-				0CD9DCAD24537CEA00CF0E99 /* Additionals */,
 				0CD9DCAC24537CD400CF0E99 /* Categories */,
+				0CD9DCAD24537CEA00CF0E99 /* Additionals */,
 			);
 			path = "News Reader";
 			sourceTree = "<group>";
@@ -342,7 +358,6 @@
 		0CD9DCAE24537D3200CF0E99 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				0CD9DCDC2454B6A400CF0E99 /* ImageCacher */,
 				0CAAE7972451649700DCAC0E /* SyncEngine.h */,
 				0CAAE7982451649700DCAC0E /* SyncEngine.m */,
 				0CAAE79A2451652700DCAC0E /* MOC.h */,
@@ -351,6 +366,7 @@
 				0CAAE79E2451738300DCAC0E /* Reachability.m */,
 				0C11EABC245053E900A5E546 /* Router.h */,
 				0C11EABD245053E900A5E546 /* Router.m */,
+				0CD9DCDC2454B6A400CF0E99 /* ImageCacher */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -507,6 +523,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C056C532455AE1700256D3D /* AlertView.xib in Resources */,
 				0C76FC4324501DCE0041BEE9 /* LaunchScreen.storyboard in Resources */,
 				0C9FEE55245314D80018543F /* DetailViewController.xib in Resources */,
 				0C76FC4024501DCE0041BEE9 /* Assets.xcassets in Resources */,
@@ -548,6 +565,7 @@
 				0C8944062451F69B009AD4CE /* HomeTableViewCell.m in Sources */,
 				0CD9DD0D2454B6D900CF0E99 /* UIImage+WebP.m in Sources */,
 				0C12D1442451E30E00DC1F57 /* ArticleDetail+CoreDataProperties.m in Sources */,
+				0C056C512455AD3600256D3D /* AlertView.m in Sources */,
 				0CAAE79C2451652700DCAC0E /* MOC.m in Sources */,
 				0CD9DCFF2454B6D900CF0E99 /* UIButton+WebCache.m in Sources */,
 				0CD9DD062454B6D900CF0E99 /* UIView+WebCacheOperation.m in Sources */,

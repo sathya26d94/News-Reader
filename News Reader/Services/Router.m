@@ -9,7 +9,9 @@
 #import "Router.h"
 #import "HomeViewController.h"
 #import "DetailViewController.h"
+#import "AlertView.h"
 #import <News_Reader-Swift.h>
+#import "Appdelegate.h"
 
 
 @implementation Router
@@ -24,6 +26,13 @@
     return dataBaseDAOObject;
 }
 
+#pragma mark -class initialization method
+- (id)init {
+    self = [super init];
+    return self;
+}
+
+
 + (UINavigationController *)navigationController {
     static dispatch_once_t once;
     static UINavigationController *dataBaseDAOObject;
@@ -31,12 +40,6 @@
         dataBaseDAOObject = [[UINavigationController alloc] init];
     });
     return dataBaseDAOObject;
-}
-
-#pragma mark -class initialization method
-- (id)init {
-    self = [super init];
-    return self;
 }
 
 + (void)showHomeScreen {
@@ -61,6 +64,16 @@
     detailVC.details = articleDetail;
     [parentVC.navigationController pushViewController:detailVC animated:true];
 }
+
++ (void)showAlertWithMessage:(NSString*)msg {
+    
+    UIWindow *window = [(AppDelegate *)[[UIApplication sharedApplication] delegate] window];
+    AlertView *alertView = [AlertView initAlertView];
+    [alertView addToWindowWithText:msg toView:window];
+    
+    
+}
+
 
 
 @end

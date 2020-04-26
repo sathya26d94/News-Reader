@@ -10,6 +10,7 @@
 #import "Router.h"
 #import <UserNotifications/UserNotifications.h>
 #import "SyncEngine.h"
+#import "Reachability.h"
 
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
@@ -18,20 +19,24 @@
 
 @implementation AppDelegate
 
-
+#pragma mark - App life cycle delegates
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [Router navigationController];
-    [Router showHomeScreen];
     [self.window makeKeyAndVisible];
-    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    [Router showHomeScreen];
+    
+    [self setBackgroundFetchInterval];
     [self requestPushNotificationPermission];
+    [self addReachabilityObserver];
+    [self checkForReachability];
     return YES;
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {    
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    //Allows downloads to continue in background
     __block UIBackgroundTaskIdentifier backgroundTaskIdentifier = [application beginBackgroundTaskWithExpirationHandler:^(void) {
         [application endBackgroundTask:backgroundTaskIdentifier];
     }];
@@ -39,6 +44,11 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [[UNUserNotificationCenter currentNotificationCenter] removeAllDeliveredNotifications];
+}
+
+#pragma mark - BackgroundFetch
+- (void)setBackgroundFetchInterval {
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
 }
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
@@ -52,6 +62,7 @@
     }];
 }
 
+#pragma mark - UNUserNotificationCenter delegates
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^) (UNNotificationPresentationOptions))completionHandler {
     
     UNNotificationPresentationOptions presentationOptions = UNNotificationPresentationOptionSound + UNNotificationPresentationOptionAlert;
@@ -72,6 +83,7 @@
     }
 }
 
+#pragma mark - request user permission
 - (void)requestPushNotificationPermission {
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate = self;
@@ -82,15 +94,31 @@
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
+#pragma mark - observe reachability
+
+- (void)addReachabilityObserver {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkForReachability) name:kReachabilityChangedNotification object:nil];
+}
+
+- (void)checkForReachability {
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    [reachability startNotifier];
+    
+    NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
+    
+    if(remoteHostStatus == NotReachable) {
+        [Router showAlertWithMessage:@"Network connection seems to be offline,You continue reading downloaded articles"];
+    }else{
+        // Else do something else
+    }
+}
+
 
 @end
 //todos
 /*
  use data.id for unique
- 2) download from home
  5) MVVM *
- 7) Offline messages
- 8) Limit No of characters
  9) clear in filter
  ● Visually interactive design to list details.
  ● Custom design, font and icons to make app more user friendly.

@@ -18,6 +18,7 @@
 + (void)showDetailScreen:(UIViewController*)parentVC  articleDetail:(ArticleDetail*)articleDetail;
 
 + (void)showHomeScreen;
++ (void)showAlertWithMessage:(NSString*)msg;
 
 
 @end

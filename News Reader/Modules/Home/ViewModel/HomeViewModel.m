@@ -10,6 +10,7 @@
 
 @implementation HomeViewModel
 
+#pragma mark - init instance method
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -18,6 +19,7 @@
     return self;
 }
 
+#pragma mark - init variables
 - (void)initializeVariables {
     self.isSortByNewFirst = true;
     self.publisherFilter = @"";
@@ -25,12 +27,14 @@
     self.fetchRequest = [ArticleDetail fetchRequest];
 }
 
+#pragma mark - start api download and load to core data
 - (void)loadDataWithFetchedResultsControllerDelegateReceiver:(id)receiver {
     self.fetchedResultsControllerDelegateReceiver = receiver;
     [self performAPIFetch];
     [self performCoreDataFetch];
 }
 
+#pragma mark - start api download
 - (void)performAPIFetch {
     NSString *url = @"https://moedemo-93e2e.firebaseapp.com/assignment/NewsApp/articles.json";
     [[SyncEngine sharedInstance] fetchFilesAsynchronouslyWithURL:url withSuccess:^(id responseObjects) {
@@ -42,6 +46,8 @@
     }];
 }
 
+
+#pragma mark - Apply filter and fetch
 - (void)applyfilterAndPerformFetchWithIsSortByNewFirst:(BOOL)isSortByNewFirst publisher:(NSString *)publisher author:(NSString *)author {
     self.isSortByNewFirst = isSortByNewFirst;
     self.publisherFilter = publisher;
@@ -49,7 +55,7 @@
     [self performCoreDataFetch];
 }
 
-#pragma mark - Utilities
+#pragma mark - fetch data from core data with the applied filters and sortDescriptor
 - (void)performCoreDataFetch {
     [self.fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"publishedAt" ascending:!self.isSortByNewFirst]]];
     NSMutableArray *compoundPredicateArray = [NSMutableArray array];

@@ -12,11 +12,13 @@
 BOOL animeBool;
 NSTimer *animeTimer;
 
+#pragma mark - Init method
 + (HomeSkeletonView*)initHomeSkeletonView {
     HomeSkeletonView *result = [[[NSBundle mainBundle] loadNibNamed:@"HomeSkeletonView" owner:nil options:nil] lastObject];
     return result;
 }
 
+#pragma mark - start animation
 -(void)createAnimeTimer {
     [animeTimer invalidate];
     animeTimer= nil;
@@ -25,6 +27,7 @@ NSTimer *animeTimer;
     animeTimer =  [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeAnimeOpacity) userInfo:nil repeats:YES];
 }
 
+#pragma mark - remove view
 -(void)removeThisView {
     [animeTimer invalidate];
     animeTimer= nil;
@@ -35,6 +38,7 @@ NSTimer *animeTimer;
     }];
 }
 
+#pragma mark - utilities
 -(void)changeAnimeOpacity {
     CGFloat val = animeBool ? 0.55 : 0.47;
     [UIView animateWithDuration:0.5 animations:^{
