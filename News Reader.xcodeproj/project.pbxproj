@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0C056C43245595F500256D3D /* HomeSkeletonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C056C42245595F500256D3D /* HomeSkeletonView.m */; };
 		0C056C452455960600256D3D /* HomeSkeletonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C056C442455960600256D3D /* HomeSkeletonView.xib */; };
-		0C056C4724559B0000256D3D /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C056C4624559B0000256D3D /* SkeletonView.swift */; };
 		0C11EABE245053E900A5E546 /* Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C11EABD245053E900A5E546 /* Router.m */; };
 		0C11EAC22450672B00A5E546 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C11EAC02450672B00A5E546 /* HomeViewController.m */; };
 		0C11EAC32450672B00A5E546 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C11EAC12450672B00A5E546 /* HomeViewController.xib */; };
@@ -76,7 +75,6 @@
 		0C056C41245595F500256D3D /* HomeSkeletonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSkeletonView.h; sourceTree = "<group>"; };
 		0C056C42245595F500256D3D /* HomeSkeletonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSkeletonView.m; sourceTree = "<group>"; };
 		0C056C442455960600256D3D /* HomeSkeletonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSkeletonView.xib; sourceTree = "<group>"; };
-		0C056C4624559B0000256D3D /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
 		0C11EABC245053E900A5E546 /* Router.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Router.h; sourceTree = "<group>"; };
 		0C11EABD245053E900A5E546 /* Router.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Router.m; sourceTree = "<group>"; };
 		0C11EABF2450672B00A5E546 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -187,6 +185,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C056C482455A1C300256D3D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				0C056C4A2455A1E000256D3D /* Details */,
+				0C056C492455A1CD00256D3D /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		0C056C492455A1CD00256D3D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0C056C4B2455A1FA00256D3D /* views */,
+				0C056C4C2455A22300256D3D /* ViewModel */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0C056C4A2455A1E000256D3D /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				0C9FEE51245314D80018543F /* DetailViewController.h */,
+				0C9FEE52245314D80018543F /* DetailViewController.m */,
+				0C9FEE53245314D80018543F /* DetailViewController.xib */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		0C056C4B2455A1FA00256D3D /* views */ = {
+			isa = PBXGroup;
+			children = (
+				0C11EABF2450672B00A5E546 /* HomeViewController.h */,
+				0C11EAC02450672B00A5E546 /* HomeViewController.m */,
+				0C11EAC12450672B00A5E546 /* HomeViewController.xib */,
+				0CD9DCAF245418AF00CF0E99 /* FilterScreenView.h */,
+				0CD9DCB0245418AF00CF0E99 /* FilterScreenView.m */,
+				0CD9DCB2245418C100CF0E99 /* FilterScreenView.xib */,
+				0C8944032451F69B009AD4CE /* HomeTableViewCell.h */,
+				0C8944042451F69B009AD4CE /* HomeTableViewCell.m */,
+				0C8944052451F69B009AD4CE /* HomeTableViewCell.xib */,
+				0C056C41245595F500256D3D /* HomeSkeletonView.h */,
+				0C056C42245595F500256D3D /* HomeSkeletonView.m */,
+				0C056C442455960600256D3D /* HomeSkeletonView.xib */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		0C056C4C2455A22300256D3D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0CD9DD13245569D900CF0E99 /* HomeViewModel.h */,
+				0CD9DD14245569D900CF0E99 /* HomeViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		0C76FC2424501DCB0041BEE9 = {
 			isa = PBXGroup;
 			children = (
@@ -215,27 +269,10 @@
 		0C76FC2F24501DCB0041BEE9 /* News Reader */ = {
 			isa = PBXGroup;
 			children = (
-				0CD9DCB424543C8A00CF0E99 /* News Reader.entitlements */,
 				0C76FC3024501DCB0041BEE9 /* AppDelegate.h */,
 				0C76FC3124501DCB0041BEE9 /* AppDelegate.m */,
-				0C11EABF2450672B00A5E546 /* HomeViewController.h */,
-				0C11EAC02450672B00A5E546 /* HomeViewController.m */,
-				0C11EAC12450672B00A5E546 /* HomeViewController.xib */,
-				0CD9DD13245569D900CF0E99 /* HomeViewModel.h */,
-				0CD9DD14245569D900CF0E99 /* HomeViewModel.m */,
-				0C8944032451F69B009AD4CE /* HomeTableViewCell.h */,
-				0C8944042451F69B009AD4CE /* HomeTableViewCell.m */,
-				0C8944052451F69B009AD4CE /* HomeTableViewCell.xib */,
-				0C056C41245595F500256D3D /* HomeSkeletonView.h */,
-				0C056C42245595F500256D3D /* HomeSkeletonView.m */,
-				0C056C442455960600256D3D /* HomeSkeletonView.xib */,
-				0C9FEE51245314D80018543F /* DetailViewController.h */,
-				0C9FEE52245314D80018543F /* DetailViewController.m */,
-				0C9FEE53245314D80018543F /* DetailViewController.xib */,
-				0CD9DCAF245418AF00CF0E99 /* FilterScreenView.h */,
-				0CD9DCB0245418AF00CF0E99 /* FilterScreenView.m */,
-				0CD9DCB2245418C100CF0E99 /* FilterScreenView.xib */,
-				0CD9DCAE24537D3200CF0E99 /* Utilitites */,
+				0C056C482455A1C300256D3D /* Modules */,
+				0CD9DCAE24537D3200CF0E99 /* Services */,
 				0CD9DCAD24537CEA00CF0E99 /* Additionals */,
 				0CD9DCAC24537CD400CF0E99 /* Categories */,
 			);
@@ -282,6 +319,7 @@
 		0CD9DCAD24537CEA00CF0E99 /* Additionals */ = {
 			isa = PBXGroup;
 			children = (
+				0CD9DCB424543C8A00CF0E99 /* News Reader.entitlements */,
 				0CD9DD102455588E00CF0E99 /* News Reader-Bridging-Header.h */,
 				0C76FC3C24501DCB0041BEE9 /* News_Reader.xcdatamodeld */,
 				0C76FC3924501DCB0041BEE9 /* Main.storyboard */,
@@ -293,7 +331,7 @@
 			path = Additionals;
 			sourceTree = "<group>";
 		};
-		0CD9DCAE24537D3200CF0E99 /* Utilitites */ = {
+		0CD9DCAE24537D3200CF0E99 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				0CD9DCDC2454B6A400CF0E99 /* ImageCacher */,
@@ -305,9 +343,8 @@
 				0CAAE79E2451738300DCAC0E /* Reachability.m */,
 				0C11EABC245053E900A5E546 /* Router.h */,
 				0C11EABD245053E900A5E546 /* Router.m */,
-				0C056C4624559B0000256D3D /* SkeletonView.swift */,
 			);
-			path = Utilitites;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		0CD9DCDC2454B6A400CF0E99 /* ImageCacher */ = {
@@ -499,7 +536,6 @@
 				0CD9DD052454B6D900CF0E99 /* UIImageView+WebCache.m in Sources */,
 				0C76FC4624501DCE0041BEE9 /* main.m in Sources */,
 				0CD9DD092454B6D900CF0E99 /* SDWebImageDownloaderOperation.m in Sources */,
-				0C056C4724559B0000256D3D /* SkeletonView.swift in Sources */,
 				0CAAE7992451649700DCAC0E /* SyncEngine.m in Sources */,
 				0C8944062451F69B009AD4CE /* HomeTableViewCell.m in Sources */,
 				0CD9DD0D2454B6D900CF0E99 /* UIImage+WebP.m in Sources */,

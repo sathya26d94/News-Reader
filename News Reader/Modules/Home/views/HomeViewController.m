@@ -14,7 +14,7 @@
 #import "Router.h"
 #import "FilterScreenView.h"
 #import "UIImageView+WebCache.h"
-#import "Categories/UIView+Category.h"
+#import "UIView+Category.h"
 #import "HomeViewModel.h"
 #import "HomeSkeletonView.h"
 
