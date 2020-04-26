@@ -101,40 +101,20 @@
     }
 }
 
-- (void)flushTable:(NSString *)tableName inManagedContext:(NSManagedObjectContext *)managedObjectContext withSuccess:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock {
-    [self batchDeleteForTable:tableName forPredicate:nil inManagedContext:managedObjectContext withSuccess:^(id responseObjects) {
-        successBlock(responseObjects);
-    } failure:^(NSString *failureReason) {
-        failureBlock(failureReason);
-    }];
-}
-
-- (void)batchDeleteForTable:(NSString *)tableName forPredicate:(NSPredicate *)predicate inManagedContext:(NSManagedObjectContext *)managedObjectContext withSuccess:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock {
+- (void)clearDataOlderThan:(NSDate*)date tableName:(NSString*)tableName withSuccess:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:tableName];
-    [fetchRequest setIncludesPropertyValues:NO]; //only fetch the managedObjectID
-    
+    [fetchRequest setIncludesPropertyValues:NO];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"publishedAt < %@", date];
+    [fetchRequest setPredicate:predicate];
     NSError *error;
-    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    for (NSManagedObject *object in fetchedObjects)
-    {
-        [managedObjectContext deleteObject:object];
+    NSArray *fetchedObjects = [_masterManagedObjectContext executeFetchRequest:fetchRequest error:&error];
+    for (NSManagedObject *object in fetchedObjects) {
+        [_masterManagedObjectContext deleteObject:object];
     }
     
     error = nil;
-    [managedObjectContext save:&error];    
+    [_masterManagedObjectContext save:&error];
     successBlock(@"success");
-}
-
-
-- (NSDictionary *)getModelEntities {
-    if(!_managedObjectModelEntities) {
-        _managedObjectModelEntities = [self managedObjectModel].entitiesByName;
-    }
-    return _managedObjectModelEntities;
-}
-
-- (BOOL)isEntityExists:(NSString*)entityName {
-    return ([[self getModelEntities] objectForKey:entityName]!=nil);
 }
 
 @end

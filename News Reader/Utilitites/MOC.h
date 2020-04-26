@@ -18,7 +18,6 @@ typedef void (^FailureBlock)(NSString* failureReason);
 + (MOC *)sharedInstance;
 - (NSManagedObjectContext *)masterManagedObjectContext;
 - (void)saveManagedObjectContext;
+- (void)clearDataOlderThan:(NSDate*)date tableName:(NSString*)tableName withSuccess:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock;
 
-- (void)flushTable:(NSString*)tableName inManagedContext:(NSManagedObjectContext*)managedObjectContext withSuccess:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock;
-- (void)batchDeleteForTable:(NSString *)tableName forPredicate:(NSPredicate *)predicate inManagedContext:(NSManagedObjectContext *)managedObjectContext withSuccess:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock;
 @end

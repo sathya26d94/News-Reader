@@ -9,6 +9,8 @@
 #import "Router.h"
 #import "HomeViewController.h"
 #import "DetailViewController.h"
+#import <News_Reader-Swift.h>
+
 
 @implementation Router
 
@@ -44,6 +46,17 @@
 }
 
 + (void)showDetailScreen:(UIViewController*)parentVC  articleDetail:(ArticleDetail*)articleDetail {
+    if (parentVC == nil) { //Incase called from notifications
+        UIViewController *topvc = [UIApplication topViewControllerObjcCWithController:nil];
+        if ([topvc isKindOfClass:HomeViewController.class]){
+            parentVC = topvc;
+        }else if ([topvc isKindOfClass:DetailViewController.class]){
+            [topvc.navigationController popViewControllerAnimated:false];
+            parentVC = [UIApplication topViewControllerObjcCWithController:nil];
+        }else {
+            //todo
+        }
+    }
     DetailViewController *detailVC = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
     detailVC.details = articleDetail;
     [parentVC.navigationController pushViewController:detailVC animated:true];

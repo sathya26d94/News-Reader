@@ -27,9 +27,19 @@
     [Router showHomeScreen];
     [self.window makeKeyAndVisible];
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    [self requestPushNotificationPermission];
     return YES;
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application {    
+    __block UIBackgroundTaskIdentifier backgroundTaskIdentifier = [application beginBackgroundTaskWithExpirationHandler:^(void) {
+        [application endBackgroundTask:backgroundTaskIdentifier];
+    }];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [[UNUserNotificationCenter currentNotificationCenter] removeAllDeliveredNotifications];
+}
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     NSLog(@"started");
@@ -42,14 +52,49 @@
     }];
 }
 
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^) (UNNotificationPresentationOptions))completionHandler {
+    
+    UNNotificationPresentationOptions presentationOptions = UNNotificationPresentationOptionSound + UNNotificationPresentationOptionAlert;    
+    completionHandler(presentationOptions);
+    
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler {
+    NSString *articelTitle = response.notification.request.content.body;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"ArticleDetail"];
+    [fetchRequest setIncludesPropertyValues:NO];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title == %@", articelTitle];
+    [fetchRequest setPredicate:predicate];
+    NSError *error;
+    NSArray *fetchedObjects = [[[MOC sharedInstance]masterManagedObjectContext]  executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects.count > 0) {
+        [Router showDetailScreen:nil articleDetail:(ArticleDetail*)fetchedObjects[0]];
+    }
+}
+
+- (void)requestPushNotificationPermission {
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
+    UNAuthorizationOptions options = UNAuthorizationOptionAlert + UNAuthorizationOptionSound;
+    [center requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        
+    }];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+}
+
 
 @end
 //todos
 /*
- 1) image caching
+ use data.id for unique
  2) download from home
- 3) background fetch *
- 4) remove old data
- 5) MVVM
+ 5) MVVM *
  6) Push Notification *
+ 7) Offline messages
+ 8) Limit No of characters
+ 9) clear in filter
+ ● Visually interactive design to list details.
+ ● Custom design, font and icons to make app more user friendly.
+ ● Use your imagination and add features which would make things easier for end
+ users.
  */

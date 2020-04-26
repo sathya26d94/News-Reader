@@ -57,6 +57,7 @@
 
 - (void)saveArticles:(id)data withSuccess:(SuccessBlock)successBlock {
     if (![[data valueForKey:@"status"] isEqualToString:@"ok"] ) {
+        successBlock(@"failure");
         return;
     }
     NSArray *dataArray = [data valueForKey:@"articles"];
@@ -83,22 +84,33 @@
         article.url = [dict valueForKey:@"url"];
         article.urlToImage = [dict valueForKey:@"urlToImage"];
         
-        NSString *dateString =  dict[@"publishedAt"];
+        NSString *dateString = dict[@"publishedAt"];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
         NSDate *date = [dateFormatter dateFromString:dateString];
+        
         article.publishedAt = date;
         
         if ([dict[@"content"] isKindOfClass:[NSString class]])
             article.content = [dict valueForKey:@"content"];
         else
             article.content = @"";
-        article.publisher = dict[@"publisher"];
+        article.publisher = dict[@"source"][@"name"];
         [[MOC sharedInstance] saveManagedObjectContext];
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        successBlock(@"Success");
-    });
+    
+    
+    NSDate *now = [NSDate date];
+    NSDateComponents *oneYears = [NSDateComponents new];
+    oneYears.year = -1;
+    NSDate *oneYearAgo = [[NSCalendar currentCalendar] dateByAddingComponents:oneYears toDate:now options:0];
+    [[MOC sharedInstance] clearDataOlderThan:oneYearAgo tableName:@"ArticleDetail" withSuccess:^(id responseObjects) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            successBlock(@"Success");
+        });
+    } failure:^(NSString *failureReason) {
+        successBlock(@"failure");
+    }];
     
 }
 

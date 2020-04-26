@@ -13,6 +13,7 @@
 #import "HomeTableViewCell.h"
 #import "Router.h"
 #import "FilterScreenView.h"
+#import "UIImageView+WebCache.h"
 #import "Categories/UIView+Category.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, FilterScreenViewDelegate>
@@ -139,11 +140,10 @@
     cell.dateLabel.text = [NSDateFormatter localizedStringFromDate:record.publishedAt
                                                          dateStyle:NSDateFormatterShortStyle
                                                          timeStyle:kCFDateFormatterShortStyle];
-    if (record.imageData != nil) {
-        cell.imageView.image = [UIImage imageWithData: record.imageData];
-    }else {
-        [cell setImageView:record];
-    }
+    [cell.articleImageView sd_cancelCurrentImageLoad];
+    [cell.articleImageView sd_setImageWithURL:[[NSURL alloc] initWithString:record.urlToImage] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+    }];
     [cell setNeedsLayout];
     [cell layoutIfNeeded];
 }
