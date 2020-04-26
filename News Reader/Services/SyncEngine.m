@@ -77,30 +77,59 @@
             continue;
         }
         ArticleDetail *article=[NSEntityDescription insertNewObjectForEntityForName:@"ArticleDetail" inManagedObjectContext: [[MOC sharedInstance] masterManagedObjectContext]];
-        if ([dict[@"author"] isKindOfClass:[NSString class]])
+        
+        if ([dict[@"author"] isKindOfClass:[NSString class]]){
             article.author = [dict valueForKey:@"author"];
-        else
+        }else{
             article.author = @"";
-        article.title = [dict valueForKey:@"title"];
-        article.descriptions = [dict valueForKey:@"description"];
-        article.url = [dict valueForKey:@"url"];
-        article.urlToImage = [dict valueForKey:@"urlToImage"];
+        }
         
-        NSString *dateString = dict[@"publishedAt"];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-        NSDate *date = [dateFormatter dateFromString:dateString];
+        if ([dict[@"title"] isKindOfClass:[NSString class]]) {
+            article.title = [dict valueForKey:@"title"];
+        }else {
+            article.title = @"";
+        }
         
-        article.publishedAt = date;
+        if ([dict[@"description"] isKindOfClass:[NSString class]]) {
+            article.descriptions = [dict valueForKey:@"description"];
+        }else {
+            article.descriptions = @"";
+        }
         
-        if ([dict[@"content"] isKindOfClass:[NSString class]])
+        if ([dict[@"url"] isKindOfClass:[NSString class]]) {
+            article.url = [dict valueForKey:@"url"];
+        }else {
+            article.url = @"";
+        }
+        
+        if ([dict[@"urlToImage"] isKindOfClass:[NSString class]]) {
+            article.urlToImage = [dict valueForKey:@"urlToImage"];
+        }else {
+            article.urlToImage = @"";
+        }
+        
+        if ([dict[@"publishedAt"] isKindOfClass:[NSString class]]) {
+            NSString *dateString = dict[@"publishedAt"];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+            NSDate *date = [dateFormatter dateFromString:dateString];
+            
+            article.publishedAt = date;
+        }
+        
+        if ([dict[@"content"] isKindOfClass:[NSString class]]) {
             article.content = [dict valueForKey:@"content"];
-        else
+        }else{
             article.content = @"";
-        article.publisher = dict[@"source"][@"name"];
+        }
+        if ([dict[@"source"][@"name"] isKindOfClass:[NSString class]]) {
+            article.publisher = dict[@"source"][@"name"];
+        }else{
+            article.publisher = @"";
+        }
+        
         [[MOC sharedInstance] saveManagedObjectContext];
     }
-    
     
     NSDate *now = [NSDate date];
     NSDateComponents *oneYears = [NSDateComponents new];

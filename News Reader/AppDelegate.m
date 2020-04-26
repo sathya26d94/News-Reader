@@ -117,11 +117,7 @@
 @end
 //todos
 /*
- use data.id for unique
- 5) MVVM *
- 9) clear in filter
- ● Visually interactive design to list details.
- ● Custom design, font and icons to make app more user friendly.
- ● Use your imagination and add features which would make things easier for end
- users.
+ 1) clear functionality in filter
+ 2) Improve the design
+ 3) Animate filter view interactions
  */

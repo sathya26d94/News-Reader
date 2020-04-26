@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D0W-LP-lrt">
-                        <rect key="frame" x="10" y="0.0" width="124.5" height="70"/>
+                        <rect key="frame" x="10" y="5" width="124.5" height="70"/>
                         <color key="backgroundColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.094117647058823528" alpha="0.6971050941780822" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="UZ6-Ny-1KV"/>
@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author :" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHN-pE-u75">
-                        <rect key="frame" x="15" y="72" width="119.5" height="15"/>
+                        <rect key="frame" x="15" y="77" width="119.5" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="PKg-na-GlC"/>
                         </constraints>
@@ -52,7 +52,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-02-10" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axO-ra-cal">
-                        <rect key="frame" x="15" y="97" width="119.5" height="10"/>
+                        <rect key="frame" x="15" y="102" width="119.5" height="10"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="U8N-12-7X1"/>
                         </constraints>
@@ -74,9 +74,9 @@
                     <constraint firstItem="iVh-xt-85k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="563-FP-4SU"/>
                     <constraint firstAttribute="trailing" secondItem="12N-0s-GB2" secondAttribute="trailing" constant="10" id="6dw-Om-cq6"/>
                     <constraint firstAttribute="trailing" secondItem="RET-PL-TGh" secondAttribute="trailing" constant="10" id="7fy-MG-8uV"/>
-                    <constraint firstItem="RET-PL-TGh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="D4r-cn-LhO"/>
+                    <constraint firstItem="RET-PL-TGh" firstAttribute="top" secondItem="D0W-LP-lrt" secondAttribute="top" constant="-5" id="Hp7-Xa-bUb"/>
                     <constraint firstItem="RET-PL-TGh" firstAttribute="leading" secondItem="D0W-LP-lrt" secondAttribute="trailing" constant="10" id="Lbw-Ut-q6v"/>
-                    <constraint firstItem="D0W-LP-lrt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Lqb-G4-X2Z"/>
+                    <constraint firstItem="D0W-LP-lrt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Lqb-G4-X2Z"/>
                     <constraint firstItem="12N-0s-GB2" firstAttribute="leading" secondItem="RET-PL-TGh" secondAttribute="leading" id="SWI-ao-zWS"/>
                     <constraint firstItem="axO-ra-cal" firstAttribute="leading" secondItem="YHN-pE-u75" secondAttribute="leading" id="ShX-Ea-PSY"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="axO-ra-cal" secondAttribute="bottom" constant="10" id="Uee-A9-j2b"/>
