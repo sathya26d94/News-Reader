@@ -35,7 +35,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *view19;
 @property (weak, nonatomic) IBOutlet UIView *view20;
 
+/*!
+ @brief Animates the views
+ */
 -(void)createAnimeTimer;
+
+/*!
+ @brief Removes the view
+ */
 -(void)removeThisView;
 
 @end

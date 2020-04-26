@@ -12,7 +12,19 @@
 @interface SyncEngine : NSObject
 
 + (SyncEngine *)sharedInstance;
+
+/*!
+ @brief Fetches the JSON data from the API server
+ @param urlString API URL
+ @param successBlock return the response object as dictionary
+ */
 - (void)fetchFilesAsynchronouslyWithURL:(NSString*)urlString withSuccess:(SuccessBlock)successBlock;
+
+/*!
+ @brief Save the given data to the core data, removes one year old data, ignore dupicates
+ @param data result dictionary from api
+ @param successBlock return the success/failure response
+ */
 - (void)saveArticles:(id) data withSuccess:(SuccessBlock)successBlock;
 
 @end

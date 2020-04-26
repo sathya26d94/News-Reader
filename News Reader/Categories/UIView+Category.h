@@ -11,6 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (Category)
+/*!
+ @brief match the parents bounds with constraints
+ @param parentView view in which this view needs to be added
+ */
 - (void)addAndMatchParentConstraintsWithParent:(UIView*)parentView;
 @end
 

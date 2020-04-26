@@ -14,6 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 
 + (AlertView*)initAlertView;
+
+/*!
+ @brief Show alert to user
+ @param text message needs to be displayed
+ @param view view where this view has to be added
+ */
 - (void)addToWindowWithText:(NSString*)text toView:(UIView*)view;
 
 @end

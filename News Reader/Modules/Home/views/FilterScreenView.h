@@ -23,9 +23,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *AuthorTextField;
 
 @property (assign, nonatomic) BOOL isSortByNewFirst;
+
+/*! This is FilterScreenViewDelegate, use this to receive updates on Filterview */
 @property (nonatomic, weak) id<FilterScreenViewDelegate> delegate;
 
 + (FilterScreenView*)initFilterScreenView;
+
+/*!
+ @brief Setupview with the given data
+ @param isSortByNewFirst isSortByNewFirst
+ @param publisher publisher
+ @param author author
+ */
 - (void)setupView:(BOOL)isSortByNewFirst publisher:(NSString *)publisher author:(NSString *)author;
 
 @end
