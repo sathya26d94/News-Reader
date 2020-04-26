@@ -54,7 +54,7 @@
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^) (UNNotificationPresentationOptions))completionHandler {
     
-    UNNotificationPresentationOptions presentationOptions = UNNotificationPresentationOptionSound + UNNotificationPresentationOptionAlert;    
+    UNNotificationPresentationOptions presentationOptions = UNNotificationPresentationOptionSound + UNNotificationPresentationOptionAlert;
     completionHandler(presentationOptions);
     
 }
@@ -89,7 +89,6 @@
  use data.id for unique
  2) download from home
  5) MVVM *
- 6) Push Notification *
  7) Offline messages
  8) Limit No of characters
  9) clear in filter
