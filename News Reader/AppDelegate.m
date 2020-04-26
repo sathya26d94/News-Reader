@@ -115,9 +115,3 @@
 
 
 @end
-//todos
-/*
- 1) clear functionality in filter
- 2) Improve the design
- 3) Animate filter view interactions
- */
